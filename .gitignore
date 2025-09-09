@@ -1,0 +1,19 @@
+# Node.js
+node_modules
+.next
+.vercel
+
+# Supabase
+.supabase
+
+# Python
+__pycache__/
+*.pyc
+
+# Secrets
+.env
+apps/**/.env
+services/**/.env
+
+# OS
+.DS_Store
