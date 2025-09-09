@@ -1,0 +1,21 @@
+name: Deploy Supabase Functions
+
+on:
+  push:
+    paths:
+      - 'apps/supabase/functions/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: supabase/setup-cli@v1
+      - name: Link project
+        run: supabase link --project-ref atozmhkawkbtwsdaowhn
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      - name: Deploy functions
+        run: supabase functions deploy generate-layout track-affiliate-click
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
